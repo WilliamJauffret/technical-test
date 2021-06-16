@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Api Technical Test
+  version: '1.0'
+  contact:
+    name: William JAUFFRET
+    email: jauffret.william@gmail.com
+  description: ''
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  '/activity/{id}':
+    get:
+      summary: Récupérer activité
+      tags:
+        - activite
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+      operationId: get-activity
+      description: Permet de récupérer une activité
+      security:
+        - Authorization: []
+    post:
+      summary: 'Créer une activité'
+      tags:
+        - activite
+      operationId: post-activity
+      description: Endpoint to post a new Activity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+      security:
+        - Authorization: []
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: 'Id de l''activite '
+  /users/sign-up:
+    post:
+      summary: ''
+      operationId: sign-up
+      tags:
+        - users
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+  /users/login:
+    post:
+      summary: ''
+      tags:
+        - users
+      operationId: users-login
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+components:
+  schemas:
+    Activity:
+      title: Activity
+      type: object
+      properties:
+        id:
+          type: string
+        descriptionCourte:
+          type: string
+        descriptionLongue:
+          type: string
+        titre:
+          type: string
+    User:
+      title: User
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
