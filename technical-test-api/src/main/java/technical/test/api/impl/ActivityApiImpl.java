@@ -11,6 +11,7 @@ import technical.test.api.v1.ActivityApi;
 import technical.test.api.v1.dto.ActivityDTO;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1")
@@ -34,5 +35,8 @@ public class ActivityApiImpl implements ActivityApi {
 
     }
 
-
+    @Override
+    public ResponseEntity<List<ActivityDTO>> getAllActivity() {
+        return new ResponseEntity<>(activityMetier.getAllActivity(),HttpStatus.OK);
+    }
 }

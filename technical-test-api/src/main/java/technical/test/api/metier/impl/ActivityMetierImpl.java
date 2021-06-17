@@ -74,4 +74,10 @@ public class ActivityMetierImpl implements ActivityMetier {
             return null;
         }
     }
+
+    @Override
+    public List<ActivityDTO> getAllActivity() {
+        List<Activity> allActivity = activityDao.findAll();
+        return  activityMapper.toActivityDtoList(allActivity);
+    }
 }

@@ -103,6 +103,21 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Activity'
+    get:
+      summary: ''
+      tags:
+        - activite
+      operationId: get-all-activity
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+      description: Récupérer toutes les activitées
 components:
   schemas:
     Activity:

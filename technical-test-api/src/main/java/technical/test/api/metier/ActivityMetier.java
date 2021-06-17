@@ -13,4 +13,6 @@ public interface ActivityMetier {
 
 
     public ActivityDTO getActivityById(String id);
+
+    public List<ActivityDTO> getAllActivity();
 }
