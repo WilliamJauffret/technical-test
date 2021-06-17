@@ -11,16 +11,23 @@ import technical.test.api.persistence.dao.ActivityRepository;
 import technical.test.api.persistence.model.Activity;
 import technical.test.api.v1.dto.ActivityDTO;
 
+import java.util.Optional;
+
 @Service
 public class ActivityMetierImpl implements ActivityMetier {
 
     private static final Logger log = LoggerFactory.getLogger(ActivityMetierImpl.class);
 
-    @Autowired
+    final
     ActivityRepository activityDao;
 
-    @Autowired
+    final
     ActivityMapper activityMapper;
+
+    public ActivityMetierImpl(ActivityMapper activityMapper, ActivityRepository activityDao) {
+        this.activityMapper = activityMapper;
+        this.activityDao = activityDao;
+    }
 
     @Override
     public ActivityDTO addActivity(ActivityDTO activityToAdd) {
@@ -33,6 +40,12 @@ public class ActivityMetierImpl implements ActivityMetier {
 
     @Override
     public ActivityDTO getActivityById(String id) {
-        return null;
+
+        Optional<Activity> activityFinded = activityDao.findById(id);
+        if(activityFinded.isPresent()){
+            return activityMapper.toActivityDto(activityFinded.get());
+        } else {
+            return null;
+        }
     }
 }

@@ -16,17 +16,21 @@ import javax.validation.Valid;
 @RequestMapping("/v1")
 public class ActivityApiImpl implements ActivityApi {
 
-    @Autowired
+    final
     ActivityMetier activityMetier;
+
+    public ActivityApiImpl(ActivityMetier activityMetier) {
+        this.activityMetier = activityMetier;
+    }
 
     @Override
     public ResponseEntity<ActivityDTO> getActivity(String id) {
-        return null;
+        return new ResponseEntity<>(activityMetier.getActivityById(id), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<ActivityDTO> postActivity(String id, @Valid ActivityDTO activityDTO) {
-        return new ResponseEntity<>(activityMetier.addActivity(activityDTO),HttpStatus.OK);
+        return new ResponseEntity<>(activityMetier.addActivity(activityDTO),HttpStatus.CREATED);
 
     }
 }
