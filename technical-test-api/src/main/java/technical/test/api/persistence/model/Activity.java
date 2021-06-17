@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Activity {
 
     @Id
-    private String id;
+    private int id;
 
     private String descriptionCourte;
 

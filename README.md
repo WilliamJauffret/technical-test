@@ -12,3 +12,12 @@ Pas de fioritures, pas de piège, pas de bonne ou mauvaise façon de faire, ce s
 Have fun !
 
 **Si tu rencontres un problème n'hésite pas à créer une issue sur le repo que tu as fork et on répondra aussi vite que possible !**
+
+
+**Comment lancer le Backend**
+
+* Lancer un maven generate-sources, cela va générer les interfaces api qui respectent bien le contrat de service 
+* Lancer un maven clean install
+* Lancer l'application
+
+Le be fonctionne avec une database mongodb installée en local. 

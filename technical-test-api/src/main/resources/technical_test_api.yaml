@@ -25,26 +25,6 @@ paths:
       description: Permet de récupérer une activité
       security:
         - Authorization: []
-    post:
-      summary: 'Créer une activité'
-      tags:
-        - activite
-      operationId: post-activity
-      description: Endpoint to post a new Activity
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Activity'
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Activity'
-      security:
-        - Authorization: []
     parameters:
       - schema:
           type: string
@@ -80,6 +60,49 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
+  /multiple-activity:
+    post:
+      summary: ''
+      tags:
+        - activite
+      operationId: post-multiple-activity
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Activity'
+      description: Poster plusieurs activitées
+    parameters: []
+  /activity:
+    post:
+      summary: ''
+      tags:
+        - activite
+      operationId: post-activity
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+      description: Poster une seule activités
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
 components:
   schemas:
     Activity:
