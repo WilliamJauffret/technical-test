@@ -2,10 +2,26 @@ import React from 'react';
 import './HomePage.css';
 
 const HomePage: React.FC = () => {
+
+    const Fruits = [
+        { name: 'Apple' },
+        { name: 'Apricot' },
+        { name: 'Honeyberry' },
+        { name: 'Papaya' },
+        { name: 'Jambul' },
+        { name: 'Plum' },
+        { name: 'Lemon' },
+        { name: 'Pomelo' }
+    ];
+
+
+
   return (
-    <div className="HomePage">
-      Technical test
-    </div>
+      <div>
+          {Fruits.map(data => (
+              <p>{data.name}</p>
+          ))}
+      </div>
   );
 };
 
