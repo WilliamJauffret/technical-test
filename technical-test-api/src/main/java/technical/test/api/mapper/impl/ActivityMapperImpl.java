@@ -17,6 +17,7 @@ public class ActivityMapperImpl implements ActivityMapper {
         activityDTO.setDescriptionCourte(activity.getDescriptionCourte());
         activityDTO.setDescriptionLongue(activity.getDescriptionLongue());
         activityDTO.setTitre(activity.getTitre());
+        activityDTO.setId(String.valueOf(activity.getId()));
         return activityDTO;
     }
 
